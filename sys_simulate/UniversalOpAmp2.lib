@@ -1,0 +1,23 @@
+* A more complete Op-Amp Model
+* Connections:      non-inverting input
+*                   |  inverting input
+*                   |  |  positive power supply
+*                   |  |  |  negative power supply
+*                   |  |  |  |  output
+*                   |  |  |  |  |
+.SUBCKT level2      1  2  3  4  5 PARAMS: Avol=1e5 GBW=1e6
+* INPUT STAGE
+  RIN   1  2  1G
+  G1    0  6  VALUE={ V(1,2) * Avol }
+  R1    6  0  1k
+* FREQUENCY RESPONSE
+  C1    6  0  { Avol / (2 * 3.14159265 * 1k * GBW) }
+* OUTPUT STAGE
+  EOUT  7  0  VALUE={ V(6) }
+  ROUT  7  5  10
+  Vlim_p 3 8 DC 0
+  Vlim_n 9 4 DC 0
+  D_p 8 5 D_limit
+  D_n 5 9 D_limit
+.MODEL D_limit D(Is=1p N=40)
+.ENDS level2
