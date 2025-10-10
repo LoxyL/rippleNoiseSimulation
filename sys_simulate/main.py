@@ -6,6 +6,7 @@ from PySpice.Unit import *
 
 from analyze_spectrum import SpectrumAnalyzer
 from ripple_calculation import RippleCalculator
+from circuit_simulator import CircuitSimulator
 
 def run_simulation_and_analysis(ripple_amplitude_V, ripple_frequency_Hz, noise_kev, calculator, plotFig=False, plotWave=False):
     """
@@ -13,30 +14,8 @@ def run_simulation_and_analysis(ripple_amplitude_V, ripple_frequency_Hz, noise_k
     Also calculates the theoretical FWHM for comparison.
     """
     # --- 1. Run PySpice Simulation ---
-    # (Simulation logic remains the same)
-    circuit = Circuit('Circuit Simulation for FWHM Analysis')
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    library_path = os.path.join(script_dir, 'UniversalOpAmp2.lib')
-    circuit.include(library_path)
-    circuit_path = os.path.join(script_dir, 'my_circuit.cir')
-    circuit.include(circuit_path)
-    circuit.PulseCurrentSource('charge_injection_pulse', 'N006', 'N003',
-                               initial_value=0@u_A, pulsed_value=0.4@u_uA,
-                               delay_time=0.1@u_ms, rise_time=1@u_ns, fall_time=1@u_ns,
-                               pulse_width=1@u_us, period=0.987@u_ms)
-    circuit.SinusoidalVoltageSource('ripple', 'Vin', circuit.gnd, 
-                                    amplitude=ripple_amplitude_V@u_V, 
-                                    frequency=ripple_frequency_Hz@u_Hz)
-    simulator = circuit.simulator(temperature=25, nominal_temperature=25)
-    analysis = simulator.transient(step_time=1@u_us, end_time=3000@u_ms)
-    output_filename = os.path.join(script_dir, 'simulation_output_temp.csv')
-    output_data = np.vstack((
-        np.array(analysis.time),
-        np.array(analysis['Vin']),
-        np.array(analysis['Vout'])
-    )).T
-    np.savetxt(output_filename, output_data,
-               delimiter=',', header='time_s,vin_V,vout_V', comments='')
+    simulator = CircuitSimulator()
+    output_filename = simulator.run_simulation(ripple_amplitude_V, ripple_frequency_Hz)
 
     # --- 2. Analyze Simulation Output ---
     analyzer = SpectrumAnalyzer(threshold=1.0)
@@ -44,7 +23,7 @@ def run_simulation_and_analysis(ripple_amplitude_V, ripple_frequency_Hz, noise_k
     analyzer.analyze(fit_spectrum=True)
     analyzer.add_gaussian_noise(noise_kev=noise_kev, enabled=True)
     analyzer.plot_results(show_waveform=plotWave, show_plot=plotFig)
-    os.remove(output_filename)
+    simulator.cleanup()
     simulated_fwhm = analyzer.last_fwhm_kev
 
     # --- 3. Calculate Theoretical FWHM ---

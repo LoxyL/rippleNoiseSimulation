@@ -92,15 +92,16 @@ def plot_fwhm_analysis(v_ratios, fwhm_diff_ratios):
     绘制 FWHM 相对差值 vs. (v_conv/v)^2 的关系图。
     """
     plt.figure(figsize=(10, 6))
-    plt.plot(v_ratios, fwhm_diff_ratios, 'bo-', label='Numerical Calculation')
+    plt.plot(v_ratios, fwhm_diff_ratios, 'bo-')
     
     plt.title('Relative FWHM Broadening: Sine vs. Gaussian Noise')
-    plt.xlabel(r'$v_{conv}^2 / v_\text{ripple}^2$ ((Detector Noise / Signal Noise)$^2$)')
+    plt.xlabel(r'$v_\mathrm{{other}}^2 / v_\mathrm{{ripple}}^2$')
     plt.ylabel('$(FWHM_{sine} - FWHM_{gauss}) / FWHM_{gauss, orig}$')
     plt.grid(True)
     plt.xscale('log') # v_conv/v 跨越数量级，使用对数坐标轴更佳
     plt.legend()
     plt.tight_layout()
+    plt.xlim(1e-2, 1e4)
     plt.show()
 
 if __name__ == '__main__':

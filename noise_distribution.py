@@ -29,11 +29,11 @@ def plot_noise_comparison(v=1.0, v_conv_list=[1.0, 2.0, 4.0]):
     with np.errstate(divide='ignore'):
         sine_pdf[sine_domain_mask] = 1 / (np.pi * np.sqrt(A**2 - x_sine_left**2))
 
-    ax_left.plot(x_left / v, gaussian_pdf * v, label=r'Original Gaussian (RMS=$v_{\text{ripple}}$)')
-    ax_left.plot(x_left / v, sine_pdf * v, linestyle='--', label=r'Original Sine Wave (RMS=$v_{\text{ripple}}$)')
-    ax_left.axvline(x=A / v, color='r', linestyle=':', label=r'Sine Asymptotes at x=$\pm\sqrt{2}v_{\text{ripple}}$')
+    ax_left.plot(x_left / v, gaussian_pdf * v, label=r'Gaussian Hypothesis (P=$v_{\text{ripple}}^2$)')
+    ax_left.plot(x_left / v, sine_pdf * v, linestyle='--', label=r'Sine Hypothesis (P=$v_{\text{ripple}}^2$)')
+    ax_left.axvline(x=A / v, color='r', linestyle=':')
     ax_left.axvline(x=-A / v, color='r', linestyle=':')
-    ax_left.set_title('Original Noise Distributions')
+    ax_left.set_title('Ripple Distributions')
     ax_left.set_xlabel(r'Amplitude / $v_{\text{ripple}}$')
     ax_left.set_ylabel(r'Probability Density $\times v_{\text{ripple}}$')
     ax_left.legend()
@@ -81,8 +81,8 @@ def plot_noise_comparison(v=1.0, v_conv_list=[1.0, 2.0, 4.0]):
             fwhm_sine = np.nan
 
         # --- 绘图 ---
-        ax.plot(x_right / v, gaussian_convolved * v, label=f'Gaussian * Gaussian (FWHM={fwhm_gaussian/v:.2f})')
-        ax.plot(x_right / v, sine_convolved * v, linestyle='--', label=f'Sine Wave * Gaussian (FWHM={fwhm_sine/v:.2f})')
+        ax.plot(x_right / v, gaussian_convolved * v, label=f'Gaussian Hypothesis (FWHM={fwhm_gaussian/v:.2f})')
+        ax.plot(x_right / v, sine_convolved * v, linestyle='--', label=f'Sine Hypothesis (FWHM={fwhm_sine/v:.2f})')
         
         # FWHM 辅助线 - 高斯
         max_gauss_conv = np.max(gaussian_convolved)
@@ -108,7 +108,7 @@ def plot_noise_comparison(v=1.0, v_conv_list=[1.0, 2.0, 4.0]):
                     transform=ax.transAxes,
                     bbox=dict(boxstyle='round,pad=0.3', fc='yellow', alpha=0.5))
         
-        ax.set_title(f'Convolved Distribution (Gaussian std dev = {v_conv/v:.1f}' + r'$v_{\text{ripple}}$' + ')')
+        ax.set_title(f'Noise Distribution ($v^2_\mathrm{{other}}/v^2_\mathrm{{ripple}}$ = {(v_conv/v)**2:.1f}'+')')
         ax.set_xlabel(r'Amplitude / $v_{\text{ripple}}$')
         ax.set_ylabel(r'Probability Density $\times v_{\text{ripple}}$')
         ax.legend()
