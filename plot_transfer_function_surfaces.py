@@ -1,25 +1,31 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib import rcParams
 from ripple_calculation import calculate_transfer_function
 
-# --- Matplotlib rendering setup ---
-# Fix for displaying the minus sign in exponents on axes
-plt.rcParams['axes.unicode_minus'] = False
-# Use STIX fonts for better math rendering and consistency
-plt.rcParams['mathtext.fontset'] = 'stix'
-plt.rcParams['font.family'] = 'STIXGeneral'
+# --- Matplotlib 字体与渲染设置 ---
+# 全局字体：英文 Times New Roman，中文回退 SimHei；避免负号方块
+rcParams['font.family'] = 'Times New Roman'
+rcParams['font.sans-serif'] = ['Times New Roman', 'SimHei']
+rcParams['axes.unicode_minus'] = False
+rcParams['font.size'] = 20
+rcParams['axes.titlesize'] = 32
+rcParams['axes.labelsize'] = 24
+rcParams['xtick.labelsize'] = 20
+rcParams['ytick.labelsize'] = 20
+rcParams['legend.fontsize'] = 20
 
 
-# --- 设置中文字体 ---
+# --- OS 定制的中文回退（在保持 Times New Roman 的前提下） ---
 try:
-    plt.rcParams['font.sans-serif'] = ['Songti SC'] # for macOS
-    plt.rcParams['axes.unicode_minus'] = False
+    rcParams['font.sans-serif'] = ['Times New Roman', 'Songti SC']  # macOS
+    rcParams['axes.unicode_minus'] = False
 except:
     try:
-        plt.rcParams['font.sans-serif'] = ['SimHei'] # for Windows
-        plt.rcParams['axes.unicode_minus'] = False
+        rcParams['font.sans-serif'] = ['Times New Roman', 'SimHei']  # Windows
+        rcParams['axes.unicode_minus'] = False
     except:
-        pass # Use default font
+        pass
 
 def format_value_with_unit(value, param_name):
     """Formats a parameter value into a human-readable string with units."""

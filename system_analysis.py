@@ -1,14 +1,23 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib import rcParams
 import matplotlib
 from plot_utils import plot_pole_zero, add_pole_zero_labels
 from ripple_calculation import calculate_transfer_function, t, t1, t2, Cx, Cf, Cd, Rb, Rf, A0, q, V_in_peak, f_ripple
 
 # 配置matplotlib以支持中文显示
 try:
-    matplotlib.rcParams['font.sans-serif'] = ['SimHei']
-    matplotlib.rcParams['axes.unicode_minus'] = False
+    # 全局字体设置：英文 Times New Roman，中文回退 SimHei；避免负号变方块
+    rcParams['font.family'] = 'Times New Roman'
+    rcParams['font.sans-serif'] = ['Times New Roman', 'SimHei']
+    rcParams['axes.unicode_minus'] = False
+    rcParams['font.size'] = 20
+    rcParams['axes.titlesize'] = 32
+    rcParams['axes.labelsize'] = 24
+    rcParams['xtick.labelsize'] = 20
+    rcParams['ytick.labelsize'] = 20
+    rcParams['legend.fontsize'] = 20
 except Exception as e:
     print(f"无法设置中文字体，图形中的中文可能无法正常显示: {e}")
     print("请尝试安装 'SimHei' 或其他中文字体。")
@@ -56,7 +65,7 @@ def analyze_and_plot():
 
     # --- 创建图形 ---
     fig, axes = plt.subplots(2, 2, figsize=(12, 10))
-    fig.suptitle('Pole-Zero Plots of Transfer Functions', fontsize=18)
+    fig.suptitle('Pole-Zero Plots of Transfer Functions', fontsize=36)
     plot_pole_zero(axes[0, 0], poles_H1, zeros_H1, '$H_1(s)$', pole_labels=pole_labels_H1, zero_labels=zero_labels_H1)
     plot_pole_zero(axes[0, 1], poles_Hg, zeros_Hg, '$H_g(s)$', pole_labels=pole_labels_Hg, zero_labels=zero_labels_Hg)
     plot_pole_zero(axes[1, 0], poles_H2_p1, zeros_H2_p1, '$H_2(s)$ Part 1', pole_labels=pole_labels_H2_p1, zero_labels=zero_labels_H2_p1)
@@ -87,7 +96,7 @@ def analyze_and_plot():
 
     fig_analysis = plt.figure(figsize=(18, 9))
     gs = fig_analysis.add_gridspec(1, 2, width_ratios=[1, 1])
-    fig_analysis.suptitle('System Analysis: Pole-Zero Map and Bode Plot', fontsize=18)
+    fig_analysis.suptitle('System Analysis: Pole-Zero Map and Bode Plot', fontsize=36)
 
     ax_pz = fig_analysis.add_subplot(gs[0, 0])
 

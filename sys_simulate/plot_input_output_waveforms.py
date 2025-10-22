@@ -1,4 +1,16 @@
 import matplotlib.pyplot as plt
+from matplotlib import rcParams
+
+# 全局字体设置：英文 Times New Roman，中文回退 SimHei；避免负号变方块
+rcParams['font.family'] = 'Times New Roman'
+rcParams['font.sans-serif'] = ['Times New Roman', 'SimHei']
+rcParams['axes.unicode_minus'] = False
+rcParams['font.size'] = 15
+rcParams['axes.titlesize'] = 24
+rcParams['axes.labelsize'] = 18
+rcParams['xtick.labelsize'] = 18
+rcParams['ytick.labelsize'] = 18
+rcParams['legend.fontsize'] = 18
 import numpy as np
 import sys
 import os
@@ -32,7 +44,7 @@ def plot_waveforms(file_path, threshold=1.0, time_limit_ms=5.0):
 
     # Create the plot with two subplots, sharing the x-axis
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 8), sharex=True)
-    fig.suptitle('Input and Output Waveforms Analysis', fontsize=16)
+    fig.suptitle('Input and Output Waveforms Analysis', fontsize=24)
 
     time_limit_s = time_limit_ms / 1000.0
 
@@ -44,9 +56,10 @@ def plot_waveforms(file_path, threshold=1.0, time_limit_ms=5.0):
         ax1.plot(analyzer.peak_times[mask], analyzer.peak_voltages[mask], "x", markersize=8, color='crimson', label='Detected Peaks')
     ax1.axhline(y=analyzer.threshold, color='red', linestyle=':', label=f'Threshold ({analyzer.threshold}V)')
     ax1.set_title('Detector Output Response (Vout)')
-    ax1.set_ylabel('Output Voltage [V]')
+    ax1.set_ylabel('Output Voltage/V')
     ax1.legend()
     ax1.grid(True)
+    ax1.tick_params(direction='in')
 
     # --- Bottom Subplot: Input Current Pulse (Idealized) ---
     # The CSV 'vin' is the voltage at the CSA input, not the current pulse itself.
@@ -75,10 +88,11 @@ def plot_waveforms(file_path, threshold=1.0, time_limit_ms=5.0):
 
     ax2.plot(t, pulse, label='Ideal Input Current', color='darkorange')
     ax2.set_title('Input Pulse Current (Id)')
-    ax2.set_xlabel('Time [s]')
-    ax2.set_ylabel('Current [μA]')
+    ax2.set_xlabel('Time/s')
+    ax2.set_ylabel('Current/μA')
     ax2.legend()
     ax2.grid(True)
+    ax2.tick_params(direction='in')
 
     # Set the shared x-axis limit
     ax2.set_xlim(0, time_limit_s)

@@ -1,6 +1,18 @@
 from math import e
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib import rcParams
+
+# 全局字体设置：英文 Times New Roman，中文回退 SimHei；避免负号变方块
+rcParams['font.family'] = 'Times New Roman'
+rcParams['font.sans-serif'] = ['Times New Roman', 'SimHei']
+rcParams['axes.unicode_minus'] = False
+rcParams['font.size'] = 20
+rcParams['axes.titlesize'] = 32
+rcParams['axes.labelsize'] = 24
+rcParams['xtick.labelsize'] = 20
+rcParams['ytick.labelsize'] = 20
+rcParams['legend.fontsize'] = 20
 import matplotlib.gridspec as gridspec
 import sys
 import os
@@ -267,7 +279,7 @@ class SpectrumAnalyzer:
             noise_ax.legend()
             noise_ax.grid(True)
         
-        fig.suptitle('Spectrum Analysis Results', fontsize=16)
+        fig.suptitle('Spectrum Analysis Results', fontsize=32)
         plt.tight_layout(rect=[0, 0.03, 1, 0.95])
         
         if show_plot:

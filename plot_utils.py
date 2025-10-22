@@ -1,6 +1,16 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib import rcParams
+rcParams['font.family'] = 'Times New Roman'
+rcParams['font.sans-serif'] = ['Times New Roman', 'SimHei']
+rcParams['axes.unicode_minus'] = False
+rcParams['font.size'] = 20
+rcParams['axes.titlesize'] = 32
+rcParams['axes.labelsize'] = 24
+rcParams['xtick.labelsize'] = 20
+rcParams['ytick.labelsize'] = 20
+rcParams['legend.fontsize'] = 20
 
 def add_pole_zero_labels(ax, points, labels, color, custom_offsets=None):
     """
@@ -32,7 +42,7 @@ def add_pole_zero_labels(ax, points, labels, color, custom_offsets=None):
                     xy=pos,
                     xytext=(x_offset_points, y_offset_points),
                     textcoords='offset points',
-                    fontsize=12,
+                    fontsize=24,
                     color=color,
                     ha='left',
                     va='center',
@@ -53,9 +63,9 @@ def plot_pole_zero(ax, poles, zeros, title, pole_labels=None, zero_labels=None):
     if len(poles) > 0:
         ax.scatter(np.real(poles), np.imag(poles), s=100, marker='x', color='r', lw=2, label='Poles')
 
-    ax.set_title(title, fontsize=14)
-    ax.set_xlabel('Real Axis (σ)', fontsize=10)
-    ax.set_ylabel('Imaginary Axis (jω)', fontsize=10)
+    ax.set_title(title, fontsize=28)
+    ax.set_xlabel('Real Axis (σ)', fontsize=20)
+    ax.set_ylabel('Imaginary Axis (jω)', fontsize=20)
     ax.grid(True, which="both", ls="--", linewidth=0.5)
     ax.axhline(0, color='black', lw=0.5)
     ax.axvline(0, color='black', lw=0.5)

@@ -2,6 +2,12 @@
 import numpy as np
 from math import e
 import matplotlib.pyplot as plt
+from matplotlib import rcParams
+
+# 全局字体设置：英文 Times New Roman，中文回退 SimHei；避免负号变方块
+rcParams['font.family'] = 'Times New Roman'
+rcParams['font.sans-serif'] = ['Times New Roman', 'SimHei']
+rcParams['axes.unicode_minus'] = False
 
 class RippleCalculator:
     """

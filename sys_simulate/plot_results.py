@@ -1,5 +1,17 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib import rcParams
+
+# 全局字体设置：英文 Times New Roman，中文回退 SimHei；避免负号变方块
+rcParams['font.family'] = 'Times New Roman'
+rcParams['font.sans-serif'] = ['Times New Roman', 'SimHei']
+rcParams['axes.unicode_minus'] = False
+rcParams['font.size'] = 15
+rcParams['axes.titlesize'] = 24
+rcParams['axes.labelsize'] = 18
+rcParams['xtick.labelsize'] = 18
+rcParams['ytick.labelsize'] = 18
+rcParams['legend.fontsize'] = 18
 import numpy as np
 
 def plot_sweep_results(csv_path='fwhm_sweep_results.csv'):
@@ -19,6 +31,13 @@ def plot_sweep_results(csv_path='fwhm_sweep_results.csv'):
     num_amps = len(amplitudes)
 
     plt.style.use('seaborn-v0_8-whitegrid')
+    # seaborn 可能覆盖字号，这里再次设置固定的数值字号
+    rcParams['font.size'] = 15
+    rcParams['axes.titlesize'] = 24
+    rcParams['axes.labelsize'] = 18
+    rcParams['xtick.labelsize'] = 18
+    rcParams['ytick.labelsize'] = 18
+    rcParams['legend.fontsize'] = 18
     # Create a subplot for each amplitude, sharing the X-axis
     fig, axes = plt.subplots(num_amps, 1, figsize=(12, 6 * num_amps), sharex=True)
     
@@ -50,6 +69,7 @@ def plot_sweep_results(csv_path='fwhm_sweep_results.csv'):
         ax.set_xscale('log')
         ax.set_yscale('linear') # Change Y-axis to linear scale
         ax.grid(True, which='both', linestyle='--', linewidth=0.5)
+        ax.tick_params(direction='in')
         ax.legend(loc='upper right') # Add a legend to each subplot
         
         # Adjust axis limits
@@ -60,7 +80,7 @@ def plot_sweep_results(csv_path='fwhm_sweep_results.csv'):
     # Add a single X-axis label to the last subplot
     axes[-1].set_xlabel('Ripple Frequency [Hz]')
     
-    fig.suptitle('Simulated vs. Theoretical FWHM of Ripple Noise', fontsize=16, y=1.0)
+    fig.suptitle('Simulated vs. Theoretical FWHM of Ripple Noise', fontsize=24, y=1.0)
     plt.tight_layout(rect=[0, 0, 1, 0.98]) # Adjust rect to make space for suptitle
     plt.show()
 

@@ -64,8 +64,7 @@
 
 \section{引言}
 
-粒子辐射探测在空间物理、高能粒子物理及医学成像等领域至关重要\cite{1, 2, 3}。粒子辐射探测器依赖高压开关电源，以扩大耗
-尽区并在耗尽区内形成强电场，驱动电离产生的电荷载流子(电子-空穴/离子对)向电极迁移，生成可测电信号。
+粒子辐射探测在空间物理、高能粒子物理及医学成像等领域至关重要\cite{1, 2, 3}。粒子辐射探测器依赖高压开关电源，以扩大耗尽区并在耗尽区内形成强电场，驱动电离产生的电荷载流子(电子-空穴/离子对)向电极迁移，生成可测电信号。
 
 高压开关电源纹波通过各种耦合机制影响探测器输出，增加噪声，降低信噪比，并导致数据失真\cite{4}。低纹波的高压开关电源可以确保探测器耗尽区电场的时间一致性，使载流子的漂移稳定;同时减少耦合到输出端的噪声，提高信噪比及能量分辨率\cite{5}。以前人们对高压开关电源纹波对粒子辐射探测器系统噪声的影响的研究定性居多，缺少定量研究\cite{6, 7}。本文将从Si-PIN 型粒子辐射探测器电路结构出发，建立从高压开关电源纹波到探测器系统输出噪声的定量理论模型，并通过系统仿真验证其适用性，为提升粒子辐射探测器的测量精度提供理论参考。
 
@@ -230,19 +229,19 @@ v_{\mathrm{ripple,out}} = \\
     \label{tab:params}
     \begin{tabular}{lll}
         \hline
-        变量名 & 值 & 描述 \\
+        变量名 (Variable) & 值 (Value) & 描述 (Description) \\
         \hline
-        $t$ & $2.8\,\mu\mathrm{s}$ & 整形放大电路的时间常数 \\
-        $R_1$ & $13 \mathrm{k\Omega}$ & 电源滤波电路电阻 \\
-        $C_1$ & $0.1\,\mu\mathrm{F}$ & 电源滤波电路电容 \\
-        $R_2$ & $10 \mathrm{M\Omega}$ & 电源滤波电路电阻 \\
-        $C_2$ & $0.01\,\mu\mathrm{F}$ & 电源滤波电路电容 \\
-        $C_{\mathrm{d}}$ & $2\text{pF}$ & 探测器结电容 \\
-        $C_{\mathrm{x}}$ & $0.1\,\mu\mathrm{F}$ & 隔直电容 \\
-        $C_{\mathrm{f}}$ & $3 \mathrm{pF}$ & 反馈电容 \\
-        $R_{\mathrm{b}}$ & $100 \mathrm{M\Omega}$ & 偏置电阻 \\
-        $R_{\mathrm{f}}$ & $200 \mathrm{M\Omega}$ & 反馈电阻 \\
-        $A_0$ & $38 \times e$ & 整形放大电路的增益 \\
+        $t$ & $2.8\,\mu\mathrm{s}$ & 整形放大电路的时间常数 (Time constant of the shaper) \\
+        $R_1$ & $13\,\mathrm{k\Omega}$ & 电源滤波电路电阻 (Power filter resistor) \\
+        $C_1$ & $0.1\,\mu\mathrm{F}$ & 电源滤波电路电容 (Power filter capacitor) \\
+        $R_2$ & $10\,\mathrm{M\Omega}$ & 电源滤波电路电阻 (Power filter resistor) \\
+        $C_2$ & $0.01\,\mu\mathrm{F}$ & 电源滤波电路电容 (Power filter capacitor) \\
+        $C_{\mathrm{d}}$ & $2\,\mathrm{pF}$ & 探测器结电容 (Detector junction capacitance) \\
+        $C_{\mathrm{x}}$ & $0.1\,\mu\mathrm{F}$ & 隔直电容 (DC-blocking capacitor) \\
+        $C_{\mathrm{f}}$ & $3\,\mathrm{pF}$ & 反馈电容 (Feedback capacitor) \\
+        $R_{\mathrm{b}}$ & $100\,\mathrm{M\Omega}$ & 偏置电阻 (Bias resistor) \\
+        $R_{\mathrm{f}}$ & $200\,\mathrm{M\Omega}$ & 反馈电阻 (Feedback resistor) \\
+        $A_0$ & $38 \times e$ & 整形放大电路的增益 (Shaper gain) \\
         \hline
     \end{tabular}
 \end{table}

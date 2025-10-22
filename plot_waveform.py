@@ -1,6 +1,18 @@
 from tkinter import Scale
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib import rcParams
+
+# 全局字体设置：英文 Times New Roman，中文回退 SimHei；避免负号变方块
+rcParams['font.family'] = 'Times New Roman'
+rcParams['font.sans-serif'] = ['Times New Roman', 'SimHei']
+rcParams['axes.unicode_minus'] = False
+rcParams['font.size'] = 20
+rcParams['axes.titlesize'] = 32
+rcParams['axes.labelsize'] = 24
+rcParams['xtick.labelsize'] = 20
+rcParams['ytick.labelsize'] = 20
+rcParams['legend.fontsize'] = 20
 import os
 import numpy as np
 
@@ -49,23 +61,23 @@ def plot_ripple_waveform(file_path):
         # Plot the waveform
         ax1.plot(df['Time'], df['Voltage'])
         plot_title = os.path.basename(file_path).replace('.csv', '')
-        ax1.set_title(f'{plot_title} - Time Domain Waveform', fontsize=16)
-        ax1.set_xlabel("Time (s)", fontsize=12)
-        ax1.set_ylabel("Voltage (V)", fontsize=12)
+        ax1.set_title(f'{plot_title} - Time Domain Waveform', fontsize=32)
+        ax1.set_xlabel("Time (s)", fontsize=24)
+        ax1.set_ylabel("Voltage (V)", fontsize=24)
         ax1.grid(True)
 
         # Plot the frequency spectrum
         ax2.plot(xf, 2.0/n * np.abs(yf[0:n//2]))
-        ax2.set_title(f'{plot_title} - Frequency Spectrum', fontsize=16)
-        ax2.set_xlabel("Frequency (Hz)", fontsize=12)
-        ax2.set_ylabel("Amplitude", fontsize=12)
+        ax2.set_title(f'{plot_title} - Frequency Spectrum', fontsize=32)
+        ax2.set_xlabel("Frequency (Hz)", fontsize=24)
+        ax2.set_ylabel("Amplitude", fontsize=24)
         ax2.grid(True)
 
         # Plot the voltage amplitude distribution histogram
         ax3.hist(df['Voltage'], bins=50, density=True, alpha=0.75, color='g')
-        ax3.set_title(f'{plot_title} - Voltage Amplitude Distribution', fontsize=16)
-        ax3.set_xlabel("Voltage (V)", fontsize=12)
-        ax3.set_ylabel("Probability Density", fontsize=12)
+        ax3.set_title(f'{plot_title} - Voltage Amplitude Distribution', fontsize=32)
+        ax3.set_xlabel("Voltage (V)", fontsize=24)
+        ax3.set_ylabel("Probability Density", fontsize=24)
         ax3.grid(True)
 
         # Adjust layout and show the chart
@@ -131,9 +143,9 @@ def plot_ripple_with_sine(file_path):
         ax.axhline(y=-amplitude, color='r', linestyle='--')
 
         # Set chart title and labels
-        ax.set_title(f'Ripple Waveform vs. Sinusoidal Ripple', fontsize=16)
-        ax.set_xlabel("Time (s)", fontsize=12)
-        ax.set_ylabel("Voltage (V)", fontsize=12)
+        ax.set_title(f'Ripple Waveform vs. Sinusoidal Ripple', fontsize=32)
+        ax.set_xlabel("Time (s)", fontsize=24)
+        ax.set_ylabel("Voltage (V)", fontsize=24)
         ax.grid(True)
         ax.legend(loc='upper right')
         

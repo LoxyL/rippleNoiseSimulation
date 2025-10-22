@@ -1,5 +1,17 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib import rcParams
+
+# 全局字体设置：英文 Times New Roman，中文回退 SimHei；避免负号变方块
+rcParams['font.family'] = 'Times New Roman'
+rcParams['font.sans-serif'] = ['Times New Roman', 'SimHei']
+rcParams['axes.unicode_minus'] = False
+rcParams['font.size'] = 20
+rcParams['axes.titlesize'] = 32
+rcParams['axes.labelsize'] = 24
+rcParams['xtick.labelsize'] = 20
+rcParams['ytick.labelsize'] = 20
+rcParams['legend.fontsize'] = 20
 
 def simulate_spectrum(peaks, amplitudes, fwhm, energy_range, num_points):
     """
@@ -81,7 +93,7 @@ def plot_spectrum(energy_bins, spectrum, peaks, amplitudes, fwhm, sigma):
 
     # 添加文本框显示FWHM和sigma的值
     text_str = f'FWHM = {fwhm}\nσ ≈ {sigma:.2f}'
-    axs[1].text(0.95, 0.95, text_str, transform=axs[1].transAxes, fontsize=12,
+    axs[1].text(0.95, 0.95, text_str, transform=axs[1].transAxes, fontsize=24,
                 verticalalignment='top', horizontalalignment='right',
                 bbox=dict(boxstyle='round,pad=0.5', fc='yellow', alpha=0.5))
     
