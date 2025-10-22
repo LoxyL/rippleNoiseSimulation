@@ -12,6 +12,11 @@ rcParams['axes.labelsize'] = 18
 rcParams['xtick.labelsize'] = 18
 rcParams['ytick.labelsize'] = 18
 rcParams['legend.fontsize'] = 18
+rcParams['mathtext.fontset'] = 'custom'
+rcParams['mathtext.rm'] = 'Times New Roman'
+rcParams['mathtext.it'] = 'Times New Roman:italic'
+rcParams['mathtext.bf'] = 'Times New Roman:bold'
+rcParams['mathtext.tt'] = 'Times New Roman'
 import numpy as np
 
 def plot_sweep_results(csv_path='fwhm_sweep_results.csv'):

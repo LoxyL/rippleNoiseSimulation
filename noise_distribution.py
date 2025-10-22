@@ -6,6 +6,17 @@ from matplotlib import rcParams
 rcParams['font.family'] = 'Times New Roman'
 rcParams['font.sans-serif'] = ['Times New Roman', 'SimHei']
 rcParams['axes.unicode_minus'] = False
+rcParams['font.size'] = 12
+rcParams['axes.titlesize'] = 15
+rcParams['axes.labelsize'] = 12
+rcParams['xtick.labelsize'] = 9
+rcParams['ytick.labelsize'] = 9
+rcParams['legend.fontsize'] = 12
+rcParams['mathtext.fontset'] = 'custom'
+rcParams['mathtext.rm'] = 'Times New Roman'
+rcParams['mathtext.it'] = 'Times New Roman:italic'
+rcParams['mathtext.bf'] = 'Times New Roman:bold'
+rcParams['mathtext.tt'] = 'Times New Roman'
 import matplotlib.gridspec as gridspec
 
 def plot_noise_comparison(v=1.0, v_conv_list=[1.0, 2.0, 4.0]):
@@ -42,6 +53,7 @@ def plot_noise_comparison(v=1.0, v_conv_list=[1.0, 2.0, 4.0]):
     ax_left.set_title('Ripple Distributions')
     ax_left.set_xlabel(r'Amplitude / $v_{\text{ripple}}$')
     ax_left.set_ylabel(r'Probability Density $\times v_{\text{ripple}}$')
+    ax_left.tick_params(direction='in')
     ax_left.legend()
     ax_left.grid(True)
     ax_left.set_ylim(0, 0.5)
@@ -118,6 +130,7 @@ def plot_noise_comparison(v=1.0, v_conv_list=[1.0, 2.0, 4.0]):
         ax.set_xlabel(r'Amplitude / $v_{\text{ripple}}$')
         ax.set_ylabel(r'Probability Density $\times v_{\text{ripple}}$')
         ax.legend()
+        ax.tick_params(direction='in')
         ax.grid(True)
 
     # 确保右侧所有子图的x轴范围相同

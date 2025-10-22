@@ -12,6 +12,11 @@ rcParams['axes.labelsize'] = 24
 rcParams['xtick.labelsize'] = 20
 rcParams['ytick.labelsize'] = 20
 rcParams['legend.fontsize'] = 20
+rcParams['mathtext.fontset'] = 'custom'
+rcParams['mathtext.rm'] = 'Times New Roman'
+rcParams['mathtext.it'] = 'Times New Roman:italic'
+rcParams['mathtext.bf'] = 'Times New Roman:bold'
+rcParams['mathtext.tt'] = 'Times New Roman'
 
 def simulate_spectrum(peaks, amplitudes, fwhm, energy_range, num_points):
     """

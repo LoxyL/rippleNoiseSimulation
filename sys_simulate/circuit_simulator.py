@@ -35,6 +35,12 @@ class CircuitSimulator:
                                         amplitude=ripple_amplitude_V@u_V,
                                         frequency=ripple_frequency_Hz@u_Hz)
         return circuit
+    
+    def set_filename(self, filename):
+        """
+        Sets the filename for the simulation output.
+        """
+        self.output_filename = os.path.join(self.script_dir, filename)
 
     def run_simulation(self, ripple_amplitude_V, ripple_frequency_Hz):
         """
@@ -68,3 +74,8 @@ class CircuitSimulator:
         """
         if os.path.exists(self.output_filename):
             os.remove(self.output_filename)
+
+if __name__ == '__main__':
+    simulator = CircuitSimulator()
+    simulator.set_filename('simulation_output.csv')
+    simulator.run_simulation(3@u_V, 10000@u_Hz)

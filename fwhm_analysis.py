@@ -6,6 +6,17 @@ from matplotlib import rcParams
 rcParams['font.family'] = 'Times New Roman'
 rcParams['font.sans-serif'] = ['Times New Roman', 'SimHei']
 rcParams['axes.unicode_minus'] = False
+rcParams['font.size'] = 12
+rcParams['axes.titlesize'] = 18
+rcParams['axes.labelsize'] = 15
+rcParams['xtick.labelsize'] = 12
+rcParams['ytick.labelsize'] = 12
+rcParams['legend.fontsize'] = 12
+rcParams['mathtext.fontset'] = 'custom'
+rcParams['mathtext.rm'] = 'Times New Roman'
+rcParams['mathtext.it'] = 'Times New Roman:italic'
+rcParams['mathtext.bf'] = 'Times New Roman:bold'
+rcParams['mathtext.tt'] = 'Times New Roman'
 
 def analyze_fwhm_change(v=1.0, v_conv_range=np.logspace(-1, 1, 50)):
     """
@@ -98,11 +109,12 @@ def plot_fwhm_analysis(v_ratios, fwhm_diff_ratios):
     绘制 FWHM 相对差值 vs. (v_conv/v)^2 的关系图。
     """
     plt.figure(figsize=(10, 6))
-    plt.plot(v_ratios, fwhm_diff_ratios, 'bo-')
+    plt.tick_params(direction='in')
+    plt.plot(v_ratios, fwhm_diff_ratios, 'ko-', markersize=4)
     
     plt.title('Relative FWHM Broadening: Sine vs. Gaussian Noise')
     plt.xlabel(r'$v_\mathrm{{other}}^2 / v_\mathrm{{ripple}}^2$')
-    plt.ylabel('$(FWHM_{sine} - FWHM_{gauss}) / FWHM_{gauss, orig}$')
+    plt.ylabel('$\mathrm{(FWHM_{sine} - FWHM_{gauss}) / FWHM_{gauss, orig}}$')
     plt.grid(True)
     plt.xscale('log') # v_conv/v 跨越数量级，使用对数坐标轴更佳
     plt.legend()

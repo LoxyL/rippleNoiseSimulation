@@ -18,6 +18,11 @@ try:
     rcParams['xtick.labelsize'] = 20
     rcParams['ytick.labelsize'] = 20
     rcParams['legend.fontsize'] = 20
+    rcParams['mathtext.fontset'] = 'custom'
+    rcParams['mathtext.rm'] = 'Times New Roman'
+    rcParams['mathtext.it'] = 'Times New Roman:italic'
+    rcParams['mathtext.bf'] = 'Times New Roman:bold'
+    rcParams['mathtext.tt'] = 'Times New Roman'
 except Exception as e:
     print(f"无法设置中文字体，图形中的中文可能无法正常显示: {e}")
     print("请尝试安装 'SimHei' 或其他中文字体。")

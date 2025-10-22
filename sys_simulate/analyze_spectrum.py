@@ -7,12 +7,17 @@ from matplotlib import rcParams
 rcParams['font.family'] = 'Times New Roman'
 rcParams['font.sans-serif'] = ['Times New Roman', 'SimHei']
 rcParams['axes.unicode_minus'] = False
-rcParams['font.size'] = 20
-rcParams['axes.titlesize'] = 32
-rcParams['axes.labelsize'] = 24
-rcParams['xtick.labelsize'] = 20
-rcParams['ytick.labelsize'] = 20
-rcParams['legend.fontsize'] = 20
+rcParams['font.size'] = 12
+rcParams['axes.titlesize'] = 18
+rcParams['axes.labelsize'] = 15
+rcParams['xtick.labelsize'] = 12
+rcParams['ytick.labelsize'] = 12
+rcParams['legend.fontsize'] = 12
+rcParams['mathtext.fontset'] = 'custom'
+rcParams['mathtext.rm'] = 'Times New Roman'
+rcParams['mathtext.it'] = 'Times New Roman:italic'
+rcParams['mathtext.bf'] = 'Times New Roman:bold'
+rcParams['mathtext.tt'] = 'Times New Roman'
 import matplotlib.gridspec as gridspec
 import sys
 import os
@@ -210,9 +215,10 @@ class SpectrumAnalyzer:
                 ax.plot(self.peak_times, self.peak_voltages, "x", markersize=8, label='Detected Peaks')
             ax.axhline(y=self.threshold, color='r', linestyle=':', label=f'Threshold ({self.threshold}V)')
             ax.set_title('Signal with Detected Event Peaks')
-            ax.set_xlabel('Time [s]')
-            ax.set_ylabel('Voltage [V]')
+            ax.set_xlabel('Time / s')
+            ax.set_ylabel('Voltage / V')
             ax.set_xlim(0, 0.01)
+            ax.tick_params(direction='in')
             ax.legend()
             ax.grid(True)
 
@@ -241,13 +247,14 @@ class SpectrumAnalyzer:
                     label = f'FWHM: {fwhm_kev:.2f} keV'
                     max_height = norm.pdf(mean_kev, loc=mean_kev, scale=std_kev) * pdf_scaling_factor_spec
                     half_max_level = max_height / 2
-                    ax.hlines(half_max_level, xmin_spec, xmax_spec, color='k', linestyle=':', label=label)
+                    ax.hlines(half_max_level, xmin_spec-fwhm_kev*10, xmax_spec+fwhm_kev*10, color='k', linestyle=':', label=label)
                     ax.vlines([mean_kev - fwhm_kev / 2, mean_kev + fwhm_kev / 2], ymin_spec, ymax_spec, color='r', linestyle='--')
                     ax.legend()
                     print(f"Fit on final data: Mean={mean_kev:.2f} keV, StdDev={std_kev:.2f} keV, FWHM={fwhm_kev:.2f} keV")
             ax.set_title('Energy Spectrum (Peak Energy Distribution)')
             ax.set_ylabel('Counts')
-            ax.set_xlabel('Peak Energy [keV]')
+            ax.set_xlabel('Peak Energy / keV')
+            ax.tick_params(direction='in')
             ax.grid(True)
 
         if 'noise' in axes_dict:
@@ -274,8 +281,9 @@ class SpectrumAnalyzer:
             noise_ax.hlines(half_max, xmin, xmax, color='k', linestyle=':', label=f'FWHM: {fwhm_noise_kev:.2f} keV')
             noise_ax.vlines([-fwhm_noise_kev / 2, fwhm_noise_kev / 2], ymin, ymax, color='r', linestyle='--')
             noise_ax.set_title('Added Gaussian Noise Distribution')
-            noise_ax.set_xlabel('Noise Energy [keV]')
+            noise_ax.set_xlabel('Noise Energy / keV')
             noise_ax.set_ylabel('Counts')
+            noise_ax.tick_params(direction='in')
             noise_ax.legend()
             noise_ax.grid(True)
         
@@ -295,5 +303,5 @@ if __name__ == '__main__':
     for file_path in files_to_analyze:
         analyzer.process_file(file_path)
     analyzer.analyze(fit_spectrum=True)
-    analyzer.add_gaussian_noise(noise_kev=10.0, enabled=True)
+    analyzer.add_gaussian_noise(noise_kev=5.0, enabled=True)
     analyzer.plot_results(show_waveform=False)

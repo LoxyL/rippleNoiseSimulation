@@ -5,12 +5,17 @@ from matplotlib import rcParams
 rcParams['font.family'] = 'Times New Roman'
 rcParams['font.sans-serif'] = ['Times New Roman', 'SimHei']
 rcParams['axes.unicode_minus'] = False
-rcParams['font.size'] = 15
-rcParams['axes.titlesize'] = 24
+rcParams['font.size'] = 12
+rcParams['axes.titlesize'] = 18
 rcParams['axes.labelsize'] = 18
-rcParams['xtick.labelsize'] = 18
-rcParams['ytick.labelsize'] = 18
-rcParams['legend.fontsize'] = 18
+rcParams['xtick.labelsize'] = 15
+rcParams['ytick.labelsize'] = 15
+rcParams['legend.fontsize'] = 12
+rcParams['mathtext.fontset'] = 'custom'
+rcParams['mathtext.rm'] = 'Times New Roman'
+rcParams['mathtext.it'] = 'Times New Roman:italic'
+rcParams['mathtext.bf'] = 'Times New Roman:bold'
+rcParams['mathtext.tt'] = 'Times New Roman'
 import numpy as np
 import sys
 import os
@@ -56,7 +61,7 @@ def plot_waveforms(file_path, threshold=1.0, time_limit_ms=5.0):
         ax1.plot(analyzer.peak_times[mask], analyzer.peak_voltages[mask], "x", markersize=8, color='crimson', label='Detected Peaks')
     ax1.axhline(y=analyzer.threshold, color='red', linestyle=':', label=f'Threshold ({analyzer.threshold}V)')
     ax1.set_title('Detector Output Response (Vout)')
-    ax1.set_ylabel('Output Voltage/V')
+    ax1.set_ylabel('Output Voltage / V')
     ax1.legend()
     ax1.grid(True)
     ax1.tick_params(direction='in')
@@ -88,8 +93,8 @@ def plot_waveforms(file_path, threshold=1.0, time_limit_ms=5.0):
 
     ax2.plot(t, pulse, label='Ideal Input Current', color='darkorange')
     ax2.set_title('Input Pulse Current (Id)')
-    ax2.set_xlabel('Time/s')
-    ax2.set_ylabel('Current/μA')
+    ax2.set_xlabel('Time / s')
+    ax2.set_ylabel('Current / μA')
     ax2.legend()
     ax2.grid(True)
     ax2.tick_params(direction='in')
