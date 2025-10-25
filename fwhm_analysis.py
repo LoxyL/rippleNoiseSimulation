@@ -120,6 +120,7 @@ def plot_fwhm_analysis(v_ratios, fwhm_diff_ratios):
     plt.legend()
     plt.tight_layout()
     plt.xlim(1e-2, 1e4)
+    plt.savefig('./non_gaussian_effect_num.png', dpi=600, bbox_inches='tight')
     plt.show()
 
 if __name__ == '__main__':

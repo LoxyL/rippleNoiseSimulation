@@ -6,12 +6,12 @@ from matplotlib import rcParams
 rcParams['font.family'] = 'Times New Roman'
 rcParams['font.sans-serif'] = ['Times New Roman', 'SimHei']
 rcParams['axes.unicode_minus'] = False
-rcParams['font.size'] = 15
-rcParams['axes.titlesize'] = 24
+rcParams['font.size'] = 12
+rcParams['axes.titlesize'] = 18
 rcParams['axes.labelsize'] = 18
-rcParams['xtick.labelsize'] = 18
-rcParams['ytick.labelsize'] = 18
-rcParams['legend.fontsize'] = 18
+rcParams['xtick.labelsize'] = 15
+rcParams['ytick.labelsize'] = 15
+rcParams['legend.fontsize'] = 12
 rcParams['mathtext.fontset'] = 'custom'
 rcParams['mathtext.rm'] = 'Times New Roman'
 rcParams['mathtext.it'] = 'Times New Roman:italic'
@@ -37,14 +37,22 @@ def plot_sweep_results(csv_path='fwhm_sweep_results.csv'):
 
     plt.style.use('seaborn-v0_8-whitegrid')
     # seaborn 可能覆盖字号，这里再次设置固定的数值字号
-    rcParams['font.size'] = 15
-    rcParams['axes.titlesize'] = 24
+    rcParams['font.family'] = 'Times New Roman'
+    rcParams['font.sans-serif'] = ['Times New Roman', 'SimHei']
+    rcParams['axes.unicode_minus'] = False
+    rcParams['font.size'] = 12
+    rcParams['axes.titlesize'] = 18
     rcParams['axes.labelsize'] = 18
-    rcParams['xtick.labelsize'] = 18
-    rcParams['ytick.labelsize'] = 18
-    rcParams['legend.fontsize'] = 18
+    rcParams['xtick.labelsize'] = 15
+    rcParams['ytick.labelsize'] = 15
+    rcParams['legend.fontsize'] = 12
+    rcParams['mathtext.fontset'] = 'custom'
+    rcParams['mathtext.rm'] = 'Times New Roman'
+    rcParams['mathtext.it'] = 'Times New Roman:italic'
+    rcParams['mathtext.bf'] = 'Times New Roman:bold'
+    rcParams['mathtext.tt'] = 'Times New Roman'
     # Create a subplot for each amplitude, sharing the X-axis
-    fig, axes = plt.subplots(num_amps, 1, figsize=(12, 6 * num_amps), sharex=True)
+    fig, axes = plt.subplots(num_amps, 1, figsize=(18, 4 * num_amps), sharex=True)
     
     # If there's only one amplitude, axes will not be an array, so we wrap it
     if num_amps == 1:
@@ -86,7 +94,9 @@ def plot_sweep_results(csv_path='fwhm_sweep_results.csv'):
     axes[-1].set_xlabel('Ripple Frequency [Hz]')
     
     fig.suptitle('Simulated vs. Theoretical FWHM of Ripple Noise', fontsize=24, y=1.0)
+    # fig.set_dpi(600)
     plt.tight_layout(rect=[0, 0, 1, 0.98]) # Adjust rect to make space for suptitle
+    plt.savefig('./circ_sim_results.png', dpi=600, bbox_inches='tight')
     plt.show()
 
 

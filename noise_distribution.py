@@ -141,6 +141,7 @@ def plot_noise_comparison(v=1.0, v_conv_list=[1.0, 2.0, 4.0]):
     plt.tight_layout()
     # 根据要求调整垂直间距
     plt.subplots_adjust(hspace=0.4)
+    plt.savefig('./non_gaussian_effect.png', dpi=600, bbox_inches='tight')
     plt.show()
 
 if __name__ == '__main__':

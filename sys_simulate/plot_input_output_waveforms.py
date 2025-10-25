@@ -104,6 +104,7 @@ def plot_waveforms(file_path, threshold=1.0, time_limit_ms=5.0):
     
     # Adjust layout and show the plot
     plt.tight_layout(rect=[0, 0.03, 1, 0.95])
+    plt.savefig('./circ_sim_response.png', dpi=600, bbox_inches='tight')
     plt.show()
 
 

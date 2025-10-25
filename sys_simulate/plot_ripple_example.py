@@ -105,8 +105,8 @@ if __name__ == "__main__":
     fig, _ = plot_ripple_example()
     # Save alongside the script for convenience
     fig.savefig(
-        "ripple_example.png",
-        dpi=200,
+        "ripple.png",
+        dpi=600,
         bbox_inches="tight",
         facecolor="white",
     )

@@ -289,6 +289,7 @@ class SpectrumAnalyzer:
         
         fig.suptitle('Spectrum Analysis Results', fontsize=32)
         plt.tight_layout(rect=[0, 0.03, 1, 0.95])
+        plt.savefig('./circ_sim_fwhm.png', dpi=600, bbox_inches='tight')
         
         if show_plot:
             plt.show()
