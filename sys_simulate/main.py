@@ -40,8 +40,8 @@ if __name__ == '__main__':
     logger = Logging.setup_logging()
 
     # --- Define Parameter Sweep Ranges ---
-    ripple_amplitudes = np.logspace(np.log10(1), np.log10(10), 3)
-    ripple_frequencies = np.logspace(np.log10(100), np.log10(100e3), 30)
+    ripple_amplitudes = np.logspace(np.log10(0.1), np.log10(10), 3)
+    ripple_frequencies = np.logspace(np.log10(100), np.log10(500e3), 40)
     
     # Create a single instance of the calculator to be used for all runs
     calculator = RippleCalculator()

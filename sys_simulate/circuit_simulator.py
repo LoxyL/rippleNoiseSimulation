@@ -7,7 +7,7 @@ class CircuitSimulator:
     """
     Handles the PySpice circuit simulation.
     """
-    def __init__(self, step_time=1@u_us, end_time=3000@u_ms):
+    def __init__(self, step_time=0.1@u_us, end_time=500@u_ms):
         """
         Initializes the simulator with timing parameters.
         """
