@@ -77,13 +77,30 @@ def plot_sweep_results(csv_path='fwhm_sweep_results.csv'):
                 linestyle='--',
                 label='Theoretical')
         
+        # --- Plot Relative Error on Twin Axis ---
+        ax_err = ax.twinx()
+        # Calculate relative error: (Simulated - Theoretical) / Theoretical * 100
+        rel_err = (amp_data['net_simulated_fwhm_keV'] - amp_data['theoretical_ripple_fwhm_keV']) / amp_data['theoretical_ripple_fwhm_keV'] * 100
+        
+        # Fill positive error with blue, negative with red
+        ax_err.fill_between(amp_data['ripple_frequency_Hz'], rel_err, 0, where=(rel_err >= 0), facecolor='blue', alpha=0.15, interpolate=True, label='Positive Error')
+        ax_err.fill_between(amp_data['ripple_frequency_Hz'], rel_err, 0, where=(rel_err < 0), facecolor='red', alpha=0.15, interpolate=True, label='Negative Error')
+        
+        # Add 0% reference line
+        ax_err.axhline(0, color='gray', linestyle='--', linewidth=1)
+        
+        # Set limits for relative error axis
+        ax_err.set_ylim(-60, 20)
+        ax_err.set_ylabel('Relative Error [%]')
+        ax_err.tick_params(direction='in')
+        
         ax.set_title(f'Ripple Amplitude = {amp:.3f} V')
         ax.set_ylabel('Net Ripple FWHM [keV]')
         ax.set_xscale('log')
         ax.set_yscale('linear') # Change Y-axis to linear scale
         ax.grid(True, which='both', linestyle='--', linewidth=0.5)
         ax.tick_params(direction='in')
-        ax.legend(loc='upper right') # Add a legend to each subplot
+        ax.legend(loc='upper center') # Moved to avoid overlapping with right y-axis ticks
         
         # Adjust axis limits
         ax.margins(x=0) # Remove horizontal padding

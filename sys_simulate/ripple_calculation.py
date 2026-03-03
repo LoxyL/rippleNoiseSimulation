@@ -78,13 +78,15 @@ class RippleCalculator:
         # 2. Calculate the peak output voltage ripple
         V_out_peak = amplitude_v * H_magnitude
 
-        # 3. The ripple creates a peak-to-peak voltage fluctuation of 2 * V_out_peak.
-        #    This is the effective "width" of the energy peak in volts.
-        delta_V = 2 * V_out_peak
+        # 3. Calculate the standard deviation of the sinusoidal voltage fluctuation.
+        #    For a sine wave with peak amplitude V_out_peak, std = V_out_peak / sqrt(2)
+        std_V = V_out_peak / np.sqrt(2)
 
-        # 4. Convert this voltage width to an energy width (FWHM) in eV.
-        #    This uses the same energy conversion formula as the analyzer.
-        fwhm_ev = 2.355 * self.w * delta_V * e / self.A0 * self.Cf / self.q
+        # 4. Convert this voltage standard deviation to an energy standard deviation in eV.
+        std_ev = self.w * std_V * e / self.A0 * self.Cf / self.q
+
+        # 5. Convert energy standard deviation to FWHM in eV (FWHM = 2.355 * std)
+        fwhm_ev = 2.355 * std_ev
         
         # 5. Convert from eV to keV
         fwhm_kev = fwhm_ev / 1000.0

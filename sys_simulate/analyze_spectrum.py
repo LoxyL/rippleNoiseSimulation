@@ -158,11 +158,11 @@ class SpectrumAnalyzer:
     def _convert_voltage_to_energy(self):
         """Converts peak voltages to energy (eV)."""
         if self.filtered_voltages is not None and len(self.filtered_voltages) > 0:
-            self.energies = 2.355 * self.w * self.filtered_voltages * e / self.A0 * self.Cf / self.q
+            self.energies = self.w * self.filtered_voltages * e / self.A0 * self.Cf / self.q
         else:
             self.energies = np.array([])
 
-    def add_gaussian_noise(self, noise_kev=1.0, enabled=True):
+    def add_gaussian_noise(self, noise_kev=1.0, enabled=True, print_msg=True):
         """Adds Gaussian noise to the energy spectrum."""
         if not enabled:
             return
@@ -170,14 +170,17 @@ class SpectrumAnalyzer:
             print("Error: Energies have not been calculated yet. Run .analyze() first.", file=sys.stderr)
             return
         if len(self.energies) == 0:
-            print("Warning: No energy data to add noise to.")
+            if print_msg:
+                print("Warning: No energy data to add noise to.")
             return
         noise_ev = noise_kev * 1000.0
         self.noise_std_dev_ev = noise_ev / 2.355
         noise = np.random.normal(loc=0.0, scale=self.noise_std_dev_ev, size=len(self.energies))
         self.noise_energies = noise
+        self.actual_noise_fwhm_kev = 2.355 * np.std(noise) / 1000.0
         self.energies += noise
-        print(f"Added Gaussian noise with FWHM = {noise_kev} keV (std dev = {self.noise_std_dev_ev / 1000:.2f} keV).")
+        if print_msg:
+            print(f"Added Gaussian noise with FWHM = {noise_kev} keV (std dev = {self.noise_std_dev_ev / 1000:.2f} keV).")
 
     def plot_results(self, show_waveform=True, show_plot=True):
         """
