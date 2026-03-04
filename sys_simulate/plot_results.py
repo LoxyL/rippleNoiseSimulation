@@ -62,6 +62,9 @@ def plot_sweep_results(csv_path='fwhm_sweep_results.csv'):
         ax = axes[i]
         amp_data = data[data['ripple_amplitude_V'] == amp].sort_values(by='ripple_frequency_Hz')
 
+        # Highlight 60 kHz to 300 kHz frequency range
+        ax.axvspan(6e4, 3e5, color='gray', alpha=0.18, zorder=0)
+
         # --- Plot Simulated and Theoretical FWHM ---
         ax.plot(amp_data['ripple_frequency_Hz'], 
                 amp_data['net_simulated_fwhm_keV'],
