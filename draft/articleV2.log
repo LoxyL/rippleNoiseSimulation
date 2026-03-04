@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.10.22)  4 MAR 2026 11:03
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.10.22)  4 MAR 2026 18:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -964,32 +964,33 @@ File: ./non_gaussian_effect.png Graphic file (type bmp)
 <./non_gaussian_effect.png>
 File: ./non_gaussian_effect_num.png Graphic file (type bmp)
 <./non_gaussian_effect_num.png>
+ [10]
 File: ./exp_circuit.png Graphic file (type bmp)
 <./exp_circuit.png>
 File: ./exp_setup.png Graphic file (type bmp)
 <./exp_setup.png>
- [10] [11] [12] [13] [14]
-Underfull \hbox (badness 3884) in paragraph at lines 434--435
+ [11] [12] [13] [14]
+Underfull \hbox (badness 3884) in paragraph at lines 437--438
 \TU/lmr/m/it/12 Based Radiation Detection Systems: A Comprehensive Analysis With a
  []
 
 
-Underfull \hbox (badness 5787) in paragraph at lines 434--435
+Underfull \hbox (badness 5787) in paragraph at lines 437--438
 \TU/lmr/m/it/12 Unified Approach\TU/lmr/m/n/12 . IEEE Transactions on Nuclear Science 70(10):2310–21.
  []
 
 
-Underfull \hbox (badness 5119) in paragraph at lines 436--437
+Underfull \hbox (badness 5119) in paragraph at lines 439--440
 []\TU/lmr/m/n/12 Wang, Y.; Lucia, O.; Zhang, Z.; Gao, S.; Guan, Y.; Xu, D. \TU/lmr/m/it/12 A
  []
 
 
-Underfull \hbox (badness 6332) in paragraph at lines 436--437
+Underfull \hbox (badness 6332) in paragraph at lines 439--440
 \TU/lmr/m/it/12 Review of High Frequency Power Converters and Related Technologies\TU/lmr/m/n/12 .
  []
 
 
-Underfull \hbox (badness 1259) in paragraph at lines 436--437
+Underfull \hbox (badness 1259) in paragraph at lines 439--440
 \TU/lmr/m/n/12 IEEE Open Journal of the Industrial Electronics Society 2020, 1, 247–260.
  []
 
@@ -998,6 +999,10 @@ Underfull \hbox (badness 1259) in paragraph at lines 436--437
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2022/08/05>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `articleV2.out' has not changed.
 (rerunfilecheck)             Checksum: C09CBBC43123B148F60CB60874118D36;911.
  ) 

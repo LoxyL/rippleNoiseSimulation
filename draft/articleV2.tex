@@ -312,18 +312,19 @@ P_\text{total,gaussian}(x)=P_\text{gaussian}(x)*G(0, v_\text{other}^2)=G(0, v_\t
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.98\linewidth]{./non_gaussian_effect.png}
+    \includegraphics[width=0.7\linewidth]{./non_gaussian_effect.png}
     \caption{纹波耦合到输出端的幅值分布区别}
     \label{fig:non_gaussian_effect}
 \end{figure}
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.98\linewidth]{./non_gaussian_effect_num.png}
+    \includegraphics[width=0.7\linewidth]{./non_gaussian_effect_num.png}
     \caption{纹波耦合到输出端的 FWHM 差异量化}
     \label{fig:non_gaussian_effect_num}
 \end{figure}
 
+\newpage
 \section{实验验证}
 
 在仿真分析的基础上，本文进一步搭建实验平台，采用信号发生器产生可控纹波并注入探测器读出电路，实测纹波对输出噪声的影响，以验证理论模型的适用性。
@@ -332,7 +333,7 @@ P_\text{total,gaussian}(x)=P_\text{gaussian}(x)*G(0, v_\text{other}^2)=G(0, v_\t
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.95\linewidth]{./exp_circuit.png}
+    \includegraphics[width=0.6\linewidth]{./exp_circuit.png}
     \caption{实验用探测器电路}
     \label{fig:exp_circuit}
 \end{figure}
@@ -341,7 +342,7 @@ P_\text{total,gaussian}(x)=P_\text{gaussian}(x)*G(0, v_\text{other}^2)=G(0, v_\t
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.95\linewidth]{./exp_setup.png}
+    \includegraphics[width=0.6\linewidth]{./exp_setup.png}
     \caption{实验线路连接图}
     \label{fig:exp_setup}
 \end{figure}
@@ -353,7 +354,8 @@ $\sqrt{5.61^2-4.55^2}\,\mathrm{keV}\approx3.28\,\mathrm{keV}$，与理论结果 
 
 实验实测值略高于理论值，其误差主要来源于两方面：一是实验采用分立元件搭建，较长的连接线引入了额外的寄生电容与电感回路；二是信号发生器在输出大振幅波形时叠加了额外的宽带背景噪声。
 
-\begin{table}[htbp]
+\newpage
+\begin{table}[!h]
 \centering
 \caption{不注入纹波的结果}
 \label{tab:no_ripple}
@@ -372,7 +374,7 @@ $\sqrt{5.61^2-4.55^2}\,\mathrm{keV}\approx3.28\,\mathrm{keV}$，与理论结果 
 \end{tabular}
 \end{table}
 
-\begin{table}[htbp]
+\begin{table}[!h]
 \centering
 \caption{接入纹波通道（0V 基线）的结果}
 \label{tab:zero_ripple}
@@ -391,7 +393,7 @@ $\sqrt{5.61^2-4.55^2}\,\mathrm{keV}\approx3.28\,\mathrm{keV}$，与理论结果 
 \end{tabular}
 \end{table}
 
-\begin{table}[htbp]
+\begin{table}[!h]
 \centering
 \caption{接入 $10\,\mathrm{kHz}$、$10\,\mathrm{V_{pp}}$ 锯齿纹波的结果}
 \label{tab:saw_ripple}
@@ -410,6 +412,7 @@ $\sqrt{5.61^2-4.55^2}\,\mathrm{keV}\approx3.28\,\mathrm{keV}$，与理论结果 
 \end{tabular}
 \end{table}
 
+\newpage
 \section{总结}
 
 本文对高压电源纹波在 Si-PIN 型粒子辐射探测器中引入的输出噪声进行了定量的分析，建立了一个从纹波时域波形预测探测器系统输出噪声 FWHM 的数值模型，并通过实验验证了模型的准确性。
