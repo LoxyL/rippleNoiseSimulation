@@ -337,7 +337,7 @@ P_\text{total,gaussian}(x)=P_\text{gaussian}(x)*G(0, v_\text{other}^2)=G(0, v_\t
     \label{fig:exp_circuit}
 \end{figure}
 
-实验线路连接示意如图\ref{fig:exp_setup}所示。信号发生器一方面向等效探测器注入 1kHz 方波脉冲用于事件模拟，另一方面在 BBV 处注入 $10\,\mathrm{kHz}$、$5\,\mathrm{V}$ 锯齿波用于模拟纹波。探测器系统的输出信号通过串口传输至 PC，在 PC 端进行数据采集与统计分析，进而获得噪声的 FWHM。
+实验线路连接示意如图\ref{fig:exp_setup}所示。信号发生器一方面向探测器两端注入 1kHz 方波脉冲，另一方面在 BBV 处注入 $10\,\mathrm{kHz}$、$10\,\mathrm{V_{pp}}$ 锯齿波用于模拟纹波。探测器系统的输出信号通过串口传输至 PC，在 PC 端进行数据采集与统计分析，进而获得噪声 FWHM。
 
 \begin{figure}[htbp]
     \centering
@@ -346,7 +346,7 @@ P_\text{total,gaussian}(x)=P_\text{gaussian}(x)*G(0, v_\text{other}^2)=G(0, v_\t
     \label{fig:exp_setup}
 \end{figure}
 
-在本实验中，信号发生器产生一系列不同幅度的 1kHz 方波信号，以模拟每秒 1000 个粒子射入探测器。通过调节方波幅度，实现不同强度信号输入，从而模拟探测器对不同能量粒子事件的响应，并测量相应的 FWHM。
+在本实验中，信号发生器产生一系列不同幅度的方波信号，从而模拟探测器对不同能量粒子事件的响应，并测量相应的 FWHM。
 
 不注入纹波、接入纹波通道（0V 基线）和接入锯齿纹波三种工况的实验结果分别如表\ref{tab:no_ripple}、表\ref{tab:zero_ripple}、表\ref{tab:saw_ripple}所示。对比表\ref{tab:zero_ripple}和表\ref{tab:saw_ripple}可见，注入锯齿纹波后输出噪声 FWHM 增加约
 $\sqrt{5.61^2-4.55^2}\,\mathrm{keV}\approx3.28\,\mathrm{keV}$，与理论结果 $2.78\,\mathrm{keV}$ 在量级上一致，验证了本文所建立纹波耦合模型的可用性。
@@ -393,7 +393,7 @@ $\sqrt{5.61^2-4.55^2}\,\mathrm{keV}\approx3.28\,\mathrm{keV}$，与理论结果 
 
 \begin{table}[htbp]
 \centering
-\caption{接入 $70\,\mathrm{kHz}$、$5\,\mathrm{V_{pp}}$ 锯齿纹波的结果}
+\caption{接入 $10\,\mathrm{kHz}$、$10\,\mathrm{V_{pp}}$ 锯齿纹波的结果}
 \label{tab:saw_ripple}
 \begin{tabular}{cccc}
 \toprule
