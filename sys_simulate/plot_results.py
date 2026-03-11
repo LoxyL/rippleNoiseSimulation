@@ -93,7 +93,7 @@ def plot_sweep_results(csv_path='fwhm_sweep_results.csv'):
         ax_err.axhline(0, color='gray', linestyle='--', linewidth=1)
         
         # Set limits for relative error axis
-        ax_err.set_ylim(-60, 20)
+        ax_err.set_ylim(-20, 20)
         ax_err.set_ylabel('Relative Error [%]')
         ax_err.tick_params(direction='in')
         

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.10.22)  4 MAR 2026 18:41
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.10.22)  11 MAR 2026 18:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -948,61 +948,48 @@ File: ./circ_sim_response.png Graphic file (type bmp)
  [6] [7]
 File: ./circ_sim_fwhm.png Graphic file (type bmp)
 <./circ_sim_fwhm.png>
-
-Missing character: There is no 
- (U+000A) in font [lmroman12-regular]:mapping=tex-text;!
-Missing character: There is no 
- (U+000A) in font [lmroman12-regular]:mapping=tex-text;!
-Missing character: There is no 
- (U+000A) in font [lmroman12-regular]:mapping=tex-text;!
-Missing character: There is no 
- (U+000A) in font [lmroman12-regular]:mapping=tex-text;!
 File: ./circ_sim_results.png Graphic file (type bmp)
 <./circ_sim_results.png>
-[8] [9]
+ [8] [9]
 File: ./non_gaussian_effect.png Graphic file (type bmp)
 <./non_gaussian_effect.png>
 File: ./non_gaussian_effect_num.png Graphic file (type bmp)
 <./non_gaussian_effect_num.png>
- [10]
+ [10] [11]
 File: ./exp_circuit.png Graphic file (type bmp)
 <./exp_circuit.png>
 File: ./exp_setup.png Graphic file (type bmp)
 <./exp_setup.png>
- [11] [12] [13] [14]
-Underfull \hbox (badness 3884) in paragraph at lines 437--438
+ [12] [13] [14] [15]
+Underfull \hbox (badness 3884) in paragraph at lines 438--439
 \TU/lmr/m/it/12 Based Radiation Detection Systems: A Comprehensive Analysis With a
  []
 
 
-Underfull \hbox (badness 5787) in paragraph at lines 437--438
+Underfull \hbox (badness 5787) in paragraph at lines 438--439
 \TU/lmr/m/it/12 Unified Approach\TU/lmr/m/n/12 . IEEE Transactions on Nuclear Science 70(10):2310–21.
  []
 
 
-Underfull \hbox (badness 5119) in paragraph at lines 439--440
+Underfull \hbox (badness 5119) in paragraph at lines 440--441
 []\TU/lmr/m/n/12 Wang, Y.; Lucia, O.; Zhang, Z.; Gao, S.; Guan, Y.; Xu, D. \TU/lmr/m/it/12 A
  []
 
 
-Underfull \hbox (badness 6332) in paragraph at lines 439--440
+Underfull \hbox (badness 6332) in paragraph at lines 440--441
 \TU/lmr/m/it/12 Review of High Frequency Power Converters and Related Technologies\TU/lmr/m/n/12 .
  []
 
 
-Underfull \hbox (badness 1259) in paragraph at lines 439--440
+Underfull \hbox (badness 1259) in paragraph at lines 440--441
 \TU/lmr/m/n/12 IEEE Open Journal of the Industrial Electronics Society 2020, 1, 247–260.
  []
 
-[15] (./articleV2.aux)
+[16] (./articleV2.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2022/08/05>
  ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `articleV2.out' has not changed.
 (rerunfilecheck)             Checksum: C09CBBC43123B148F60CB60874118D36;911.
  ) 
@@ -1013,6 +1000,6 @@ Here is how much of TeX's memory you used:
  56467 multiletter control sequences out of 15000+600000
  568216 words of font info for 103 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 93i,11n,99p,605b,486s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 93i,11n,99p,627b,486s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on articleV2.pdf (15 pages).
+Output written on articleV2.pdf (16 pages).
