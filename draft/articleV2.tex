@@ -41,10 +41,17 @@
 \maketitle
 
 \begin{abstract}
-粒子辐射探测器需要在高压电源的偏置下才能正常工作，高压电源的纹波直接影响粒子辐射探测器系统的噪声。本文首先通过理论分析，建立噪声传递函数，得到了从高压电源纹波到粒子辐射探测器系统输出噪声的定量理论模型，并进行了系统仿真验证。仿真结果与理论结果相吻合，验证了理论的适用性。本文的研究可以为后续粒子辐射探测器高压电源的研制提供参考。
+为定量评估高压开关电源纹波对粒子辐射探测器输出噪声的影响，建立基于电荷敏感前置放大器架构的纹波耦合理论模型。推导涵盖电源滤波及信号整形等环节的传递函数，并评估纹波非高斯特性引发的能谱展宽效应。构建全流程电路仿真模型与硬件验证平台，通过向读出电路注入可控锯齿波信号，在宽频带及多幅值条件下进行噪声特性实测。结果表明，理论计算与电路仿真数据在全频段吻合，典型纹波频率区间的误差低于10\%；硬件实测的噪声展宽增量与理论模型预测值的相对偏差约为18\%，验证了所建模型的适用性。研究揭示了高压电源纹波的噪声耦合机制，为粒子辐射探测器系统低噪声高压开关电源的设计与优化提供了理论依据。
 \end{abstract}
 
-\noindent\textbf{关键词：}粒子辐射探测器；高压电源；电压纹波；噪声分析
+\noindent\textbf{关键词：}粒子辐射探测器；高压开关电源；电压纹波；噪声分析
+
+\renewcommand{\abstractname}{Abstract}
+\begin{abstract}
+To quantitatively evaluate the impact of high-voltage switching power supply ripples on the output noise of particle radiation detectors, a theoretical ripple coupling model based on the charge-sensitive preamplifier architecture is established. The transfer function covering the power supply filtering and signal shaping stages is derived, and the energy spectrum broadening effect induced by the non-Gaussian characteristics of the ripples is evaluated. A full-process circuit simulation model and a hardware verification platform are constructed, and noise characteristics are measured under broadband and multi-amplitude conditions by injecting controllable sawtooth wave signals into the readout circuit. The results show that the theoretical calculations are consistent with the circuit simulation data across the entire frequency band, with an error of less than 10\% in the typical ripple frequency range. The relative deviation between the hardware-measured noise broadening increment and the predicted value of the theoretical model is approximately 18\%, verifying the applicability of the established model. The study reveals the noise coupling mechanism of high-voltage power supply ripples, providing a theoretical basis for the design and optimization of low-noise high-voltage switching power supplies for particle radiation detector systems.
+\end{abstract}
+
+\noindent\textbf{Keywords: }particle radiation detector; high-voltage switching power supply; voltage ripple; noise analysis
 
 \section{引言}
 
